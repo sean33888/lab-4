@@ -14,7 +14,7 @@ int* __attribute__ ( ( section ( ".mprjram" ) ) ) fir(){
 	initfir();
 	//write down your fir
     reg_fir_status = 0x00000001;
-    int reg_fir_x = 0;
+	
     for (int i=0; i<data_length; i++){
         reg_fir_x = i+1;
         outputbuffer[i] = reg_fir_y;

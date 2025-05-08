@@ -76,7 +76,33 @@ module user_proj_example #(
     wire [`MPRJ_IO_PADS-1:0] io_out;
     wire [`MPRJ_IO_PADS-1:0] io_oeb;
 
-    
+    wb_to_fir #(
+        .WB_ADDR_WIDTH(12),
+        .WB_DATA_WIDTH(32),
+        .AXIS_DATA_WIDTH(32),
+        .Tape_Num(11)
+    ) wb_to_fir_inst (
+        .wb_clk_i(clk),
+        .wb_rst_i(rst),
+        .wbs_stb_i(wb_stb_i),
+        .wbs_cyc_i(wb_cyc_i),
+        .wbs_we_i(wb_we_i),
+        .wbs_sel_i(wb_sel_i),
+        .wbs_dat_i(wb_dat_i),
+        .wbs_adr_i(wb_adr_i),
+        .wbs_ack_o(wb_ack_o),
+        .wbs_dat_o(wb_dat_o),
+        .tap_WE(tap_WE),
+        .tap_EN(tap_EN),
+        .tap_Di(tap_Di),
+        .tap_A(tap_A),
+        .tap_Do(tap_Do),
+        .data_WE(data_WE),
+        .data_EN(data_EN),
+        .data_Di(data_Di),
+        .data_A(data_A),
+        .data_Do(data_Do)
+    );
 
     bram user_bram (
         .CLK(clk),

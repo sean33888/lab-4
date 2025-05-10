@@ -103,14 +103,18 @@ module user_proj_example #(
         .data_A(data_A),
         .data_Do(data_Do)
     );
-
-    bram user_bram (
-        .CLK(clk),
-        .WE0(),
-        .EN0(),
-        .Di0(),
-        .Do0(),
-        .A0()
+    
+    exmem exmem (
+        .wb_clk_i(wb_clk_i),
+        .wb_rst_i(wb_rst_i),
+        .wbs_stb_i(wbs_stb_i),
+        .wbs_cyc_i(mem_cyc),
+        .wbs_we_i(wbs_we_i),
+        .wbs_sel_i(wbs_sel_i),
+        .wbs_dat_i(wbs_dat_i),
+        .wbs_adr_i(wbs_adr_i),
+        .wbs_ack_o(mem_ack),
+        .wbs_dat_o(mem_dat)
     );
 
 endmodule
